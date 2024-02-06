@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = ViewController()
+        let viewController = UINavigationController(rootViewController: SearchRouter.setupModule())
+        window?.rootViewController = viewController
         
         return true
     }
