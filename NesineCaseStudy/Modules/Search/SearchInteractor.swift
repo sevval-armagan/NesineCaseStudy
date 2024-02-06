@@ -23,7 +23,7 @@ final class SearchInteractor {
             return
         }
         
-//        task?.cancel()
+        task?.cancel()
         
         task = URLSession.shared.dataTask(with: url) { [weak self] data, resp, error in
             guard let self else {

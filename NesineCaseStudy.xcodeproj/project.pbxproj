@@ -18,6 +18,8 @@
 		163735E82B719E2F0030E5AD /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163735E72B719E2F0030E5AD /* SearchResponse.swift */; };
 		163735EB2B71A03B0030E5AD /* SearchAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163735EA2B71A03B0030E5AD /* SearchAdapter.swift */; };
 		163735EE2B71A16F0030E5AD /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163735ED2B71A16F0030E5AD /* SearchCell.swift */; };
+		163735F12B71B4080030E5AD /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163735F02B71B4080030E5AD /* Collection+Extension.swift */; };
+		163735F42B71B42E0030E5AD /* DownloadableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163735F32B71B42E0030E5AD /* DownloadableImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		163735E72B719E2F0030E5AD /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		163735EA2B71A03B0030E5AD /* SearchAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAdapter.swift; sourceTree = "<group>"; };
 		163735ED2B71A16F0030E5AD /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		163735F02B71B4080030E5AD /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		163735F32B71B42E0030E5AD /* DownloadableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadableImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +71,9 @@
 			isa = PBXGroup;
 			children = (
 				163735C42B71990D0030E5AD /* AppDelegate.swift */,
+				163735F22B71B4240030E5AD /* Components */,
 				163735D82B719CF40030E5AD /* Modules */,
+				163735EF2B71B3F60030E5AD /* Extensions */,
 				163735CD2B71990E0030E5AD /* Assets.xcassets */,
 				163735CF2B71990E0030E5AD /* LaunchScreen.storyboard */,
 				163735D22B71990E0030E5AD /* Info.plist */,
@@ -120,6 +126,22 @@
 				163735ED2B71A16F0030E5AD /* SearchCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		163735EF2B71B3F60030E5AD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				163735F02B71B4080030E5AD /* Collection+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		163735F22B71B4240030E5AD /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				163735F32B71B42E0030E5AD /* DownloadableImageView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,11 +218,13 @@
 				163735EE2B71A16F0030E5AD /* SearchCell.swift in Sources */,
 				163735E32B719D0E0030E5AD /* SearchRouter.swift in Sources */,
 				163735E12B719D0E0030E5AD /* SearchContract.swift in Sources */,
+				163735F42B71B42E0030E5AD /* DownloadableImageView.swift in Sources */,
 				163735E82B719E2F0030E5AD /* SearchResponse.swift in Sources */,
 				163735E22B719D0E0030E5AD /* SearchPresenter.swift in Sources */,
 				163735C52B71990D0030E5AD /* AppDelegate.swift in Sources */,
 				163735E52B719D0E0030E5AD /* SearchInteractor.swift in Sources */,
 				163735EB2B71A03B0030E5AD /* SearchAdapter.swift in Sources */,
+				163735F12B71B4080030E5AD /* Collection+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -37,8 +37,12 @@ extension SearchAdapter: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! SearchCell
         
-        let app = presenter.getApps()[indexPath.item]
-        cell.set(name: app.trackName ?? "n/a", imagesUrls: app.screenshotUrls ?? [])
+        if let app = presenter.getApps()[safe: indexPath.item] {
+            cell.set(
+                name: app.trackName ?? "n/a",
+                imageUrls: app.screenshotUrls ?? []
+            )
+        }
         
         return cell
     }

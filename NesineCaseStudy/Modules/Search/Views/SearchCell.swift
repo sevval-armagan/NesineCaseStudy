@@ -31,14 +31,15 @@ final class SearchCell: UICollectionViewCell {
         stackView.spacing = 4
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
+        stackView.clipsToBounds = true
         return stackView
     }()
     
-    private lazy var imageViews: [UIImageView] = {
+    private lazy var imageViews: [DownloadableImageView] = {
         (1...3).map { _ in
-            let imageView = UIImageView()
+            let imageView = DownloadableImageView()
             imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.contentMode = .scaleAspectFit
+            imageView.contentMode = .scaleAspectFill
             imageView.backgroundColor = .lightGray
             imageView.layer.cornerRadius = 4
             imageView.clipsToBounds = true
@@ -60,7 +61,7 @@ final class SearchCell: UICollectionViewCell {
         addSubview(generalStackView)
         
         NSLayoutConstraint.activate([
-            generalStackView.widthAnchor.constraint(equalToConstant: frame.width),
+            nameLabel.heightAnchor.constraint(equalToConstant: 22),
             generalStackView.topAnchor.constraint(equalTo: topAnchor),
             generalStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             generalStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -68,11 +69,23 @@ final class SearchCell: UICollectionViewCell {
         ])
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        imageViews.forEach { imageView in
+            imageView.cancelDownload()
+        }
+    }
+    
     func set(
         name: String,
-        imagesUrls: [String]
+        imageUrls: [String]
     ) {
         nameLabel.text = name
+        
+        imageViews.enumerated().forEach { index, imageView in
+            imageView.set(urlString: imageUrls[safe: index])
+        }
     }
     
     required init?(coder: NSCoder) {
