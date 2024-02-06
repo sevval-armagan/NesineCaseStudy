@@ -49,6 +49,6 @@ extension SearchPresenter: ISearchInteractorToPresenter {
     }
     
     func fetchAppsFailure(error: Error?) {
-        print(error?.localizedDescription ?? "")
+        router?.presentAlert(title: "Error!", message: error?.localizedDescription ?? "Unknown error.")
     }
 }

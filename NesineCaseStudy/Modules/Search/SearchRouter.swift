@@ -45,4 +45,10 @@ extension SearchRouter: ISearchRouter {
         let viewController = SearchDetailRouter.setupModule(imageData: imageData)
         view?.navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    func presentAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        view?.present(alertController, animated: true)
+    }
 }

@@ -45,4 +45,5 @@ protocol ISearchInteractorToPresenter: AnyObject {
 protocol ISearchRouter: AnyObject {
     
     func navigateToSearchDetail(imageData: Data)
+    func presentAlert(title: String, message: String)
 }
