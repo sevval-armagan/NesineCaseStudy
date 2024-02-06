@@ -40,7 +40,8 @@ extension SearchAdapter: UICollectionViewDataSource {
         if let app = presenter.getApps()[safe: indexPath.item] {
             cell.set(
                 name: app.trackName ?? "n/a",
-                imageUrls: app.screenshotUrls ?? []
+                imageUrls: app.screenshotUrls ?? [],
+                delegate: self
             )
         }
         
@@ -53,7 +54,6 @@ extension SearchAdapter: UICollectionViewDataSource {
 extension SearchAdapter: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.didSelectItemAt(index: indexPath.item)
     }
 }
 
@@ -63,5 +63,14 @@ extension SearchAdapter: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         .init(width: collectionView.frame.width, height: 250)
+    }
+}
+
+// MARK: - SearchCellDelegate
+
+extension SearchAdapter: SearchCellDelegate {
+    
+    func handleImageView(imageData: Data) {
+        presenter.handleImageView(imageData: imageData)
     }
 }

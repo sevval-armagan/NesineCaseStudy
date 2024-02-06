@@ -37,8 +37,8 @@ extension SearchPresenter: ISearchPresenter {
         interactor?.fetchApps(query: query)
     }
     
-    func didSelectItemAt(index: Int) {
-        print("tap:", index)
+    func handleImageView(imageData: Data) {
+        router?.navigateToSearchDetail(imageData: imageData)
     }
 }
 
@@ -49,6 +49,6 @@ extension SearchPresenter: ISearchInteractorToPresenter {
     }
     
     func fetchAppsFailure(error: Error?) {
-        // TODO: popup
+        print(error?.localizedDescription ?? "")
     }
 }

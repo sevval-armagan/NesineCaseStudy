@@ -40,4 +40,9 @@ final class SearchRouter {
 }
 
 extension SearchRouter: ISearchRouter {
+    
+    func navigateToSearchDetail(imageData: Data) {
+        let viewController = SearchDetailRouter.setupModule(imageData: imageData)
+        view?.navigationController?.pushViewController(viewController, animated: true)
+    }
 }

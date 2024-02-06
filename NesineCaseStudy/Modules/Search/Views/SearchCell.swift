@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol SearchCellDelegate: AnyObject {
+    
+    func handleImageView(imageData: Data)
+}
+
 final class SearchCell: UICollectionViewCell {
+    
+    private weak var delegate: SearchCellDelegate?
     
     private lazy var generalStackView: UIStackView = {
         let stackView = UIStackView()
@@ -36,13 +43,19 @@ final class SearchCell: UICollectionViewCell {
     }()
     
     private lazy var imageViews: [DownloadableImageView] = {
-        (1...3).map { _ in
+        (1...3).map { index in
             let imageView = DownloadableImageView()
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.contentMode = .scaleAspectFill
             imageView.backgroundColor = .lightGray
             imageView.layer.cornerRadius = 4
             imageView.clipsToBounds = true
+            imageView.tag = index
+            imageView.isUserInteractionEnabled = true
+            
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGestureRecognizer(_:)))
+            imageView.addGestureRecognizer(tapGestureRecognizer)
+            
             return imageView
         }
     }()
@@ -79,13 +92,26 @@ final class SearchCell: UICollectionViewCell {
     
     func set(
         name: String,
-        imageUrls: [String]
+        imageUrls: [String],
+        delegate: SearchCellDelegate?
     ) {
         nameLabel.text = name
         
         imageViews.enumerated().forEach { index, imageView in
             imageView.set(urlString: imageUrls[safe: index])
         }
+        
+        self.delegate = delegate
+    }
+    
+    @objc
+    private func handleTapGestureRecognizer(_ sender: UITapGestureRecognizer) {
+        guard let tag = sender.view?.tag,
+              let imageData = imageViews[safe: tag - 1]?.image?.pngData() else {
+            return
+        }
+        
+        delegate?.handleImageView(imageData: imageData)
     }
     
     required init?(coder: NSCoder) {

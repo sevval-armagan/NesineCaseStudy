@@ -25,7 +25,8 @@ protocol ISearchPresenter: AnyObject {
     func getApps() -> [SearchResult]
     
     func searchBarTextDidChange(query: String)
-    func didSelectItemAt(index: Int)
+    
+    func handleImageView(imageData: Data)
 }
 
 protocol ISearchInteractor: AnyObject {
@@ -42,4 +43,6 @@ protocol ISearchInteractorToPresenter: AnyObject {
 }
 
 protocol ISearchRouter: AnyObject {
+    
+    func navigateToSearchDetail(imageData: Data)
 }

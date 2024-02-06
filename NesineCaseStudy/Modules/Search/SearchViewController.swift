@@ -19,19 +19,7 @@ final class SearchViewController: UIViewController {
     
     // MARK: Views
     
-    private lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.tintColor = UIColor.black.withAlphaComponent(1.0)
-        searchBar.placeholder = "Search for app"
-        searchBar.backgroundColor = UIColor.clear
-        searchBar.barTintColor = UIColor.clear
-        searchBar.searchBarStyle = .minimal
-        searchBar.returnKeyType = .search
-        searchBar.showsCancelButton = false
-        searchBar.showsBookmarkButton = false
-        searchBar.sizeToFit()
-        return searchBar
-    }()
+    private lazy var searchBar = UISearchBar()
     
     private lazy var collectionView = UICollectionView(
         frame: view.frame,
@@ -60,7 +48,14 @@ extension SearchViewController: ISearchView {
     }
     
     func setupSearchBar() {
-        
+        searchBar.tintColor = UIColor.black.withAlphaComponent(1.0)
+        searchBar.placeholder = "Search for app"
+        searchBar.backgroundColor = UIColor.clear
+        searchBar.barTintColor = UIColor.clear
+        searchBar.searchBarStyle = .minimal
+        searchBar.returnKeyType = .search
+        searchBar.showsCancelButton = false
+        searchBar.showsBookmarkButton = false
     }
     
     func setupSearchBarListeners() {
@@ -78,7 +73,7 @@ extension SearchViewController: ISearchView {
     }
     
     func setupCollectionView() {
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemBackground
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = adapter
         collectionView.dataSource = adapter
